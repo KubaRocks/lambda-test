@@ -5,15 +5,20 @@ import { createTRPCContext } from "@app/server/api/trpc";
 import { appRouter } from "@app/server/api/root";
 
 export const config = {
-  runtime: "nodejs",
+  runtime: "experimental-edge",
 };
+
+console.error("hello from api/trpc/[trpc].ts", "config loaded");
 
 // export API handler
 export default createNextApiHandler({
   router: appRouter,
   createContext: createTRPCContext,
   onError: ({ path, error }) => {
-    console.error(`❌ tRPC failed on ${path ?? "<no-path>"}: ${error.message}`);
+    console.error(
+      `❌ tRPC failed on ${path ?? "<no-path>"}: ${error.message}`,
+      error
+    );
   },
   /*
   onError:
