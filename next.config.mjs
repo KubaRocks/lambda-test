@@ -7,9 +7,6 @@
 /** @type {import("next").NextConfig} */
 const config = {
   reactStrictMode: true,
-  experimental: {
-    runtime: 'edge',
-  },
 
   /**
    * If you have the "experimental: { appDir: true }" setting enabled, then you
