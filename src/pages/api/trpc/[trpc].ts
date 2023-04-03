@@ -1,33 +1,25 @@
 import { createNextApiHandler } from "@trpc/server/adapters/next";
 
-// import { env } from "@app/env.mjs";
+import { env } from "@app/env.mjs";
 import { createTRPCContext } from "@app/server/api/trpc";
 import { appRouter } from "@app/server/api/root";
 
 export const config = {
-  runtime: "experimental-edge",
+  runtime: "edge",
 };
 
-console.error("hello from api/trpc/[trpc].ts", "config loaded");
+console.log("🚀 ~ file: [trpc].ts ~ line 1 ~ config", config);
 
 // export API handler
 export default createNextApiHandler({
   router: appRouter,
   createContext: createTRPCContext,
-  onError: ({ path, error }) => {
-    console.error(
-      `❌ tRPC failed on ${path ?? "<no-path>"}: ${error.message}`,
-      error
-    );
-  },
-  /*
   onError:
     env.NODE_ENV === "development"
       ? ({ path, error }) => {
           console.error(
-            `❌ tRPC failed on ${path ?? "<no-path>"}: ${error.message}`,
+            `❌ tRPC failed on ${path ?? "<no-path>"}: ${error.message}`
           );
         }
       : undefined,
-  */
 });
