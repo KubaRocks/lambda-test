@@ -2,9 +2,11 @@ import { type NextPage } from "next";
 import Head from "next/head";
 
 import { api } from "@app/utils/api";
+import { useQuery } from "@tanstack/react-query";
 
 const Home: NextPage = () => {
-  const hello = api.example.hello.useQuery({ text: "from tRPC" });
+  const helloTrpc = api.example.hello.useQuery({ text: "from tRPC" });
+  const { data: helloApi } = useQuery<{name: string}>(['helloApi'], () => fetch('/api/hello').then(res => res.json()));
 
   return (
     <>
@@ -19,7 +21,10 @@ const Home: NextPage = () => {
             Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
           </h1>
           <p className="text-2xl text-white">
-            {hello.data ? hello.data.greeting : "Loading tRPC query..."}
+            {helloApi ? helloApi.name : "Loading API query..."}
+          </p>
+          <p className="text-2xl text-white">
+            {helloTrpc.data ? helloTrpc.data.greeting : "Loading tRPC query..."}
           </p>
         </div>
       </main>
