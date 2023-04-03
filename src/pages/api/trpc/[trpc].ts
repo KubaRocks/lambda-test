@@ -5,7 +5,7 @@ import { createTRPCContext } from "@app/server/api/trpc";
 import { appRouter } from "@app/server/api/root";
 
 export const config = {
-  runtime: "edge",
+  runtime: "nodejs",
 };
 
 // export API handler
