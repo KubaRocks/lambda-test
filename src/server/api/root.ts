@@ -6,7 +6,6 @@ import { exampleRouter } from "@app/server/api/routers/example";
  *
  * All routers added in /api/routers should be manually added here.
  */
-console.log("🚀 ~ file: root.ts ~ line 1");
 export const appRouter = createTRPCRouter({
   example: exampleRouter,
 });

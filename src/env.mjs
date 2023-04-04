@@ -6,8 +6,6 @@ import { z } from "zod";
  */
 const server = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]),
-  LOGFLARE_API_KEY: z.string().min(1),
-  LOGFLARE_TOKEN: z.string().min(1),
 });
 
 /**
@@ -26,8 +24,6 @@ const client = z.object({
  */
 const processEnv = {
   NODE_ENV: process.env.NODE_ENV,
-  LOGFLARE_API_KEY: process.env.LOGFLARE_API_KEY,
-  LOGFLARE_TOKEN: process.env.LOGFLARE_TOKEN,
   // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
 };
 
