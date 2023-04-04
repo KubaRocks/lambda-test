@@ -16,7 +16,3 @@ CustomErrorComponent.getInitialProps = async (contextData) => {
 };
 
 export default CustomErrorComponent;
-
-export const config = {
-  runtime: "experimental-edge",
-};
