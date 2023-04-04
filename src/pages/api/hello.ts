@@ -1,8 +1,11 @@
+import { logger } from "@app/logger/logger";
+
 export const config = {
-  runtime: 'edge',
+  runtime: "edge",
 };
 
 export default function handler() {
+  logger.info("🚀 ~ file: hello.ts ~ line 8 ~ config", config);
   return new Response(
     JSON.stringify({
       name: process.env.NEXT_RUNTIME,
@@ -10,7 +13,7 @@ export default function handler() {
     {
       status: 200,
       headers: {
-        'content-type': 'application/json',
+        "content-type": "application/json",
       },
     }
   );
