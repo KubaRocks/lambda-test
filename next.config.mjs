@@ -2,11 +2,17 @@
  * Run `build` or `dev` with `SKIP_ENV_VALIDATION` to skip env validation.
  * This is especially useful for Docker builds.
  */
+import { withSentryConfig } from "@sentry/nextjs";
+
 !process.env.SKIP_ENV_VALIDATION && (await import("./src/env.mjs"));
 
 /** @type {import("next").NextConfig} */
 const config = {
   reactStrictMode: true,
+
+  sentry: {
+    hideSourceMaps: true,
+  },
 
   /**
    * If you have the "experimental: { appDir: true }" setting enabled, then you
@@ -19,4 +25,5 @@ const config = {
     defaultLocale: "en",
   },
 };
-export default config;
+
+export default withSentryConfig(config);
