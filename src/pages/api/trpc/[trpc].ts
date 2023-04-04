@@ -7,6 +7,7 @@ import { logger } from "@app/logger/logger";
 
 export const config = {
   runtime: "edge",
+  unstable_allowDynamic: ["/node_modules/lodash/*"],
 };
 
 logger.info("🚀 ~ file: [trpc].ts ~ line 1 ~ config", config);
